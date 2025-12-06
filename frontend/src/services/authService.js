@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/v1/auth/';
+// Use Vite env variable VITE_API_URL in production; fall back to localhost for local dev
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_URL = `${API_BASE}/api/v1/auth/`;
 
 const resgister = async(userData) => {
     const response = await axios.post(`${API_URL}register`, userData);

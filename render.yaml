@@ -1,0 +1,18 @@
+# Render configuration to deploy backend service
+services:
+  - type: web
+    name: itee-blog-backend
+    env: node
+    branch: master
+    plan: free
+    # The service root where package.json for the backend lives
+    root: backend
+    buildCommand: npm install
+    startCommand: npm start
+    # Note: Set secrets (MONGODB_URI, JWT_SECRET, etc.) in the Render dashboard for this service.
+    # Do NOT store production secrets in plaintext here.
+    # Recommended environment variables to configure in Render:
+    # - MONGODB_URI (or DATABASE_URL)
+    # - JWT_SECRET
+    # - NODE_ENV=production
+    # - CLIENT_ORIGIN (your Vercel frontend URL, e.g. https://your-frontend.vercel.app)
